@@ -165,16 +165,16 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
+            <!--<plugin>-->
+                <!--<artifactId>maven-war-plugin</artifactId>-->
+                <!--<version>2.2</version>-->
+                <!--<configuration>-->
                     <!-- These classes are in /tomcat-7.0.23/lib/ext directory -->
                     <!--<packagingExcludes>WEB-INF/**/util/webcontent/**</packagingExcludes>-->
-                    <warName>${war.name}</warName>
-                    <outputDirectory>${liferay.deploy.dir}</outputDirectory>
-                </configuration>
-            </plugin>
+                    <!--<warName>${war.name}</warName>-->
+                    <!--<outputDirectory>${liferay.deploy.dir}</outputDirectory>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
 
 <!--            <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
