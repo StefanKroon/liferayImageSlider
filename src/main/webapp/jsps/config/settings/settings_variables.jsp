@@ -5,8 +5,7 @@
 
 	String portletResource = ParamUtil.getString(renderRequest, "portletResource");
 								 
-	PortletPreferences preferences = SliderUtil
-										.getPreference(renderRequest, portletResource);
+	PortletPreferences preferences = SliderUtil.getPreference(renderRequest, portletResource);
 
 	//Slides Animation
 	String effectSelectedValue = preferences.getValue(SliderParamUtil.SETTINGS_EFFECT, "random");
@@ -33,19 +32,19 @@
 	String addCssClassValue = preferences.getValue(SliderParamUtil.SETTINGS_ADDITIONAL_CSS_CLASS, "");
 	
 	StringBuilder settings = new StringBuilder(); 
-	settings.append("effect:" + effectSelectedValue);
-	settings.append(", slices:" + slicesValue);
-	settings.append(", boxCols:" + boxColumnValue);
-	settings.append(", animSpeed:" + animationSpeedValue);
-	settings.append(", pauseTime:" + pauseTimeValue);
-	settings.append(", startSlide=" + startSlideValue);
-	settings.append(", directionNav=" + directionNav);
-	settings.append(", directionNavHide=" + autoHideNav);
-	settings.append(", prevText=" + prevTextValue);
-	settings.append(", nextText=" + nextTextValue);
-	settings.append(", controlNav=" + controlNavValue);
-	settings.append(", keyboardNav=" + keyboardNavValue);
-	settings.append(", pauseOnHover=" + pauseOnHoverValue);
-	settings.append(", manualAdvance=" + nextTextValue);
-	settings.append(", captionOpacity=" + manualAdvanceValue);
+	settings.append("effect:").append(effectSelectedValue);
+	settings.append(", slices:").append(slicesValue);
+	settings.append(", boxCols:").append(boxColumnValue);
+	settings.append(", animSpeed:").append(animationSpeedValue);
+	settings.append(", pauseTime:").append(pauseTimeValue);
+	settings.append(", startSlide=").append(startSlideValue);
+	settings.append(", directionNav=").append(directionNav);
+	settings.append(", directionNavHide=").append(autoHideNav);
+	settings.append(", prevText=").append(prevTextValue);
+	settings.append(", nextText=").append(nextTextValue);
+	settings.append(", controlNav=").append(controlNavValue);
+	settings.append(", keyboardNav=").append(keyboardNavValue);
+	settings.append(", pauseOnHover=").append(pauseOnHoverValue);
+	settings.append(", manualAdvance=").append(nextTextValue);
+	settings.append(", captionOpacity=").append(manualAdvanceValue);
 %>

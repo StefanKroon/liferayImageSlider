@@ -42,6 +42,7 @@ public class ExtJournalArticleService extends JournalArticleLocalServiceWrapper 
         super(journalArticleLocalService);
     }
 
+    @Override
     public JournalArticle updateArticle(
             long userId, long groupId, String articleId, double version,
             Map<Locale, String> titleMap, Map<Locale, String> descriptionMap,
@@ -80,6 +81,7 @@ public class ExtJournalArticleService extends JournalArticleLocalServiceWrapper 
         return article;
     }
 
+    @Override
     public JournalArticle updateArticleTranslation(
             long groupId, String articleId, double version, Locale locale,
             String title, String description, String content,
@@ -126,9 +128,9 @@ public class ExtJournalArticleService extends JournalArticleLocalServiceWrapper 
                             if (layoutValue.startsWith(PORTLET_ID)) {
 
                                 // the portletId is the initial part before first "," if extra info is present
-                                String portletId = layoutValue.contains(StringPool.COMMA) ?
-                                        layoutValue.substring(0, layoutValue.indexOf(StringPool.COMMA)) :
-                                        layoutValue;
+                                String portletId = layoutValue.contains(StringPool.COMMA)
+                                        ? layoutValue.substring(0, layoutValue.indexOf(StringPool.COMMA))
+                                        : layoutValue;
 
                                 //get preferences for portlet
                                 List<com.liferay.portal.model.PortletPreferences> portletPrefs = PortletPreferencesLocalServiceUtil.getPortletPreferences(layout.getPlid(), portletId);
@@ -155,16 +157,16 @@ public class ExtJournalArticleService extends JournalArticleLocalServiceWrapper 
                                             String _order = values[5];
 
                                             String updatedValues[] = new String[]{
-                                                    sliderArticle.getTitle(languageId),
-                                                    sliderArticle.getLink(languageId),
-                                                    sliderArticle.getText(languageId),
-                                                    sliderArticle.getImage(languageId),
-                                                    _id,
-                                                    _order
+                                                sliderArticle.getTitle(languageId),
+                                                sliderArticle.getLink(languageId),
+                                                sliderArticle.getText(languageId),
+                                                sliderArticle.getImage(languageId),
+                                                _id,
+                                                _order
                                             };
 
                                             if (_log.isInfoEnabled()) {
-                                                _log.info("Update preferences with key='" + key + "' for portlet '" + portletId + "'.");
+                                                _log.info(new StringBuilder().append("Update preferences with key='").append(key).append("' for portlet '").append(portletId).append("'.").toString());
                                             }
 
                                             portletPreferences.setValues(key, updatedValues);
@@ -178,7 +180,7 @@ public class ExtJournalArticleService extends JournalArticleLocalServiceWrapper 
                 }
             }
         } catch (Exception e) {
-            _log.error("Can not update Slider preferences: " + e.getMessage());
+            _log.error(new StringBuilder().append("Can not update Slider preferences: ").append(e.getMessage()).toString());
         }
 
     }
@@ -236,7 +238,7 @@ public class ExtJournalArticleService extends JournalArticleLocalServiceWrapper 
         setPortalClassLoader();
         JournalArticle ja = super.deleteJournalArticle(id);
         setSliderClassLoader();
-	return ja;
+        return ja;
     }
 
     @Override
@@ -244,7 +246,7 @@ public class ExtJournalArticleService extends JournalArticleLocalServiceWrapper 
         setPortalClassLoader();
         JournalArticle ja = super.deleteJournalArticle(journalArticle);
         setSliderClassLoader();
-	return ja;
+        return ja;
     }
 
     @Override
@@ -1015,9 +1017,7 @@ public class ExtJournalArticleService extends JournalArticleLocalServiceWrapper 
     private void setSliderClassLoader() {
         Thread.currentThread().setContextClassLoader(SLIDER_CLASS_LOADER);
     }
-
     public static final ClassLoader PORTAL_CLASS_LOADER = PortalClassLoaderUtil.getClassLoader();
     public static final ClassLoader SLIDER_CLASS_LOADER = Thread.currentThread().getContextClassLoader();
-
     private static Log _log = LogFactoryUtil.getLog(ExtJournalArticleService.class);
 }

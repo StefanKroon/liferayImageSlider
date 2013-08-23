@@ -22,7 +22,7 @@ public class SliderArticleUtil {
 
     private static Log _log = LogFactoryUtil.getLog(SliderArticleUtil.class);
 
-    public static SliderArticle getSliderArticle(JournalArticle journalArticle){
+    public static SliderArticle getSliderArticle(JournalArticle journalArticle) {
 
         SliderArticle sliderArticle = new SliderArticle();
 
@@ -46,7 +46,7 @@ public class SliderArticleUtil {
 
                 List<Element> elements = rootElement.elements();
 
-                for (Element element: elements) {
+                for (Element element : elements) {
 
                     String elementName = element.attribute("name").getValue();
 
@@ -54,9 +54,9 @@ public class SliderArticleUtil {
 
                     for (Element contentElement : contentElements) {
 
-                        String contentLanguageId = contentElement.attribute("language-id") != null ?
-                                                            contentElement.attribute("language-id").getValue() :
-                                                            null;
+                        String contentLanguageId = contentElement.attribute("language-id") != null
+                                ? contentElement.attribute("language-id").getValue()
+                                : null;
 
                         sliderArticle.setField(elementName, contentElement.getText(), contentLanguageId);
                     }
@@ -88,7 +88,7 @@ public class SliderArticleUtil {
         return sliderArticle;
     }
 
-    public static List<SliderArticle> getAllSliderArticles(PortletRequest request){
+    public static List<SliderArticle> getAllSliderArticles(PortletRequest request) {
 
         List<SliderArticle> sliderArticles = new ArrayList<SliderArticle>();
 
